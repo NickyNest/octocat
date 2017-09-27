@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
+import Repo from './Repo';
 
 class ReposList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            repos: []
-        };
-    }
-
-    componentWillMount() {
-        fetch('https://api.github.com/orgs/octokit/repos')
-            .then(response => response.json())
-            .then(data => this.setState({ repos: data }));
-    }
-
     render() {
         return (
             <nav>
-                {this.state.repos.map(repo => (
-                    <a href="">{repo.name}</a>
-                ))}
+                {
+                    this.props.repos.map(repo => (
+                        <div className="repo">
+                            <Repo key={repo.id} repo={repo} />
+                        </div>
+                    ))
+                }
             </nav>
         );
     }
