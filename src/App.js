@@ -14,9 +14,11 @@ class App extends Component {
 
   onClick = (repoId) => {
     this.setState({
-      currentRepo: this.state.repos.find(({ id }) => id === repoId)
+      currentRepo: this.state.repos.find(repo => repo.id === repoId)
     });
     console.log(repoId);
+    console.log(this.state.repos.find(repo => repo.id === repoId));
+    console.log(this.state.currentRepo.name);
   };
 
   componentWillMount() {
