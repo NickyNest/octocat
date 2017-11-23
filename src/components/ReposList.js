@@ -8,7 +8,7 @@ class ReposList extends Component {
                 {
                     this.props.repos.map(repo => (
                         <div className="repo">
-                            <Repo key={repo.id} repo={repo} />
+                            <Repo key={repo.id} repo={repo} onClick={this.props.onClick} />
                         </div>
                     ))
                 }

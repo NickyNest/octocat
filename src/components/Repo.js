@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
 class Repo extends Component {
+    onClick = () => {
+        this.props.onClick(this.props.repo.id);
+    };
+
     render() {
         return (
-            <a className="repo" href="">{this.props.repo.name}</a>
+            <div>
+            <span>{this.props.repo.id}</span>
+            <a className="repo" onClick={this.onClick}>{this.props.repo.name}</a>
+            </div>
         );
     }
 }

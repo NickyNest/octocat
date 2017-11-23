@@ -7,20 +7,28 @@ class App extends Component {
       super(props);
 
       this.state = {
-          repos: []
+          repos: [],
+          currentRepo: {}
       };
   }
+
+  onClick = (repoId) => {
+    this.setState({
+      currentRepo: this.state.repos.find(({ id }) => id === repoId)
+    });
+    console.log(repoId);
+  };
 
   componentWillMount() {
     fetch('https://api.github.com/orgs/octokit/repos')
         .then(response => response.json())
-        .then(data => this.setState({ repos: data }));
+        .then(data => this.setState({ repos: data, currentRepo: data[0] }));
   }
 
   render() {
     return (
       <div className="">
-        <ReposList repos={this.state.repos} />
+        <ReposList repos={this.state.repos} onClick={this.onClick}/>
       </div>
     );
   }
