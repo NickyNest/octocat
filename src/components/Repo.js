@@ -7,9 +7,9 @@ class Repo extends Component {
 
     render() {
         return (
-            <div>
-            <span>{this.props.repo.id}</span>
-            <a className="repo" onClick={this.onClick}>{this.props.repo.name}</a>
+            <div className="repo">
+                <span>{this.props.repo.id}</span>
+                <a className="repo" onClick={this.onClick}>{this.props.repo.name}</a>
             </div>
         );
     }

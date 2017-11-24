@@ -15,10 +15,10 @@ class App extends Component {
   onClick = (repoId) => {
     this.setState({
       currentRepo: this.state.repos.find(repo => repo.id === repoId)
-    });
+    },
+    () => {console.log(this.state.currentRepo.name);});
     console.log(repoId);
     console.log(this.state.repos.find(repo => repo.id === repoId));
-    console.log(this.state.currentRepo.name);
   };
 
   componentWillMount() {
@@ -29,9 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="">
         <ReposList repos={this.state.repos} onClick={this.onClick}/>
-      </div>
     );
   }
 }
